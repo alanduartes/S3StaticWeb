@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+a {
+    color: #ff9900;
+    font-weight: bold;
+}
+
+.aws-color {
+    color: #ff9900;
+}
+
+.cloudformation-color {
+    color: #f14280;
+}
+
+.s3-color {
+    color: #63a738;
+}
+
+.iam-color {
+    color: #f7494b;
+}
+
+.cloudfront-color {
+    color: #844fdd;
+}
+
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #18181e;
+    color: white;
+}
+
+.flex-container {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header.page-header {
+    height: 80px;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 8px;
+    border-bottom: solid 1px #ff9900;
+}
+
+.wrap-content {
+    padding: 20px;
+    .back {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+        .back-icon {
+            font-weight: bold;
+            font-size: 2em;
+            margin-right: 10px;
+            color: #ff9900;
+        }
+    }
+    .content {
+        justify-content: flex-start;
+    }
+}

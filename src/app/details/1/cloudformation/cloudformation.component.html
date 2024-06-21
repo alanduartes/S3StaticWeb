@@ -1,0 +1,107 @@
+<div class="flex-container wrap-content">
+    <div class="flex-container">
+        <div class="back" routerLink="/"> <div class="back-icon"><</div> Voltar</div>
+    </div>
+    <div class="flex-container content">
+        <div class="column-left">
+            <div>
+                How this is my first phase, it's worth remind that it's not a good practice using the root user to manage the resources of 
+                <span class="aws-color">AWS</span>, so I created an <span class="iam-color">IAM</span> User with a custom policy using the principle of least privilegies,
+                granting these permissions:<br>
+                <pre>
+cloudformation:*
+s3:CreateBucket
+s3:DeleteBucket
+s3:DeleteBucketWebsite
+s3:DeleteBucketPolicy
+s3:PutBucketPolicy
+s3:PutBucketWebsite
+s3:PutBucketPublicAccessBlock
+s3:PutEncryptionConfiguration"
+                </pre>
+                <br><br><br>
+                Starting simple... <br><br>
+                I used
+                <span class="cloudformation-color">CloudFormation</span> to provisioning a <span class="s3-color">S3 Bucket</span> 
+                with Static Web Hosting enabled and add a Bucket Policy to make it public, once the infra was provisioned I made the upload of 
+                a static web site manually through the <span class="aws-color">AWS</span> console.
+<br><br>
+                Create a file timelineaws.yaml
+                <div class="path-code">
+                    <pre>
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Creating a bucket with a bucket policy to make it public
+
+Parameters:
+  BucketName: {{'{'}} Type: String, Default: "timelineaws-study" {{'}'}}
+
+Resources:  
+  TimelineAwsBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Ref BucketName
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+
+  PublicBucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref TimelineAwsBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          Effect: Allow
+          Principal: "*"
+          Action: "s3:GetObject"
+          Resource: !Sub "arn:aws:s3:::${{'{'}}TimelineAwsBucket{{'}'}}/*"
+Outputs:
+  TimelineAwsBucket:
+    Description: Name of the bucket
+    Value: !Ref TimelineAwsBucket
+                    </pre>
+
+
+                </div>
+                Then run the aws cli command to create your <span class="cloudformation-color">cloudformation</span> stack, to do all this, it's necessary for you create an account on AWS<br>
+                Download the <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html" target="_blank">awscli</a>
+                Create an IAM User<br>
+                Create an access key to that user<br>
+                Run on your terminal <span class="aws-color">aws configure</span> and fill up the required fields to authenticate<br><br>
+                The code bellow I'm using a cloudformation profile that holds the credentials and configurations of an IAM user that I created.
+
+                <pre>
+aws cloudformation create-stack --stack-name timelineaws-stack \
+    --template-body file://timelineaws.yaml --profile cloudformation
+                </pre>
+
+                When the creating of the resources is finished you can.<br>
+                Access your AWS console<br>
+                Go to your bucket<br>
+                Click in properties<br>
+                Scroll all the way down and you'll find the DNS to access your static web site<br><br>
+
+                Now if I want to delete all the provisioned resources, first we need to access our bucket and delete all it's content, and then we can delete
+                the <span class="cloudformation-color">cloudformation</span> stack through the console or within the CLI.
+                <pre>
+aws cloudformation delete-stack --stack-name timelineaws-stack \
+    --profile cloudformation
+                </pre>
+                Again I'm making explicity the profile of my <span class="cloudformation-color">cloudformation</span> user
+
+                <br><br>
+                Now if you want the code for that <span class="iam-color">Angular</span> webpage it's available on my 
+                <a href="" target="_blank">GITHUB</a>, but this project is far from beautiful so it's better for you to
+                upload your own static page to your bucket.
+            </div>
+        </div>
+            
+        <img class="img-diagram" src="/diagrams/1step.png" />
+    </div>
+</div>  

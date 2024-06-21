@@ -1,0 +1,24 @@
+.column-left {
+    display: flex;
+    width: 60%;
+    margin: 40px;
+    flex-direction: column;
+}
+.img-diagram {
+    width: 450px;
+    height: 400px;
+}
+
+pre {
+    background-color: #1d1d25;
+    width: 420px;
+    border-radius: 6px;
+    margin: 6px;
+    padding: 16px;
+    font-size: 0.8em;
+}
+
+.path-code {
+    display: flex;
+
+}
