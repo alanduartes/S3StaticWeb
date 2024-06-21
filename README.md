@@ -1,27 +1,24 @@
 # Timelineaws
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+This project that I called DevLog is intended for me to track my AWS studying proccess, it makes me focus on what I'm doing, and makes me think about "What next?"
 
-## Development server
+### 21/06/2024
+Now I'm starting with an Angular Static Web Page hosted on a S3 Bucket, using CloudFormation to provisioning the infrastructure in the AWS.
+If you managed to clone this repo and run the application, you'll find all the proccess I made to achieve this.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+_yeah! I know, english...portuguese, I'm sorry, I'll fix that on the next commit._
+![image](https://github.com/alanduartes/S3StaticWeb/assets/2921409/993021d1-7a0b-401f-a2d0-9a623328f4a6)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Next step is to distribuite the content using CloudFront, and after that I'm not sure....
+
+Maybe at some point I'll have a simple CRUD application running on ECS with an ALB and an ASG. I'm accepting ideas, not too hard ideas, at least not now
+
+## Angular
+
+The static web page is been made with Angular v18
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can run ng build that'll generate a dist folder inside the project and inside you'll find the index.html and related assets.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
