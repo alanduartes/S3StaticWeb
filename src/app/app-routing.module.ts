@@ -5,8 +5,7 @@ import { CloudformationComponent } from './details/1/cloudformation/cloudformati
 import { CloudfrontComponent } from './details/2/cloudfront/cloudfront.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'timeline', pathMatch: 'full' }, //default route
-    { path: 'timeline', component: AwsTimelineComponent },
+    { path: '', component: AwsTimelineComponent },
     { path: 'firststep', component: CloudformationComponent },
     { path: 'secondstep', component: CloudfrontComponent },
 ];

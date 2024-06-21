@@ -6,7 +6,6 @@ This project that I called DevLog is intended for me to track my AWS studying pr
 Now I'm starting with an Angular Static Web Page hosted on a S3 Bucket, using CloudFormation to provisioning the infrastructure in the AWS.
 If you managed to clone this repo and run the application, you'll find all the proccess I made to achieve this.
 
-_yeah! I know, english...portuguese, I'm sorry, I'll fix that on the next commit._
 ![image](https://github.com/alanduartes/S3StaticWeb/assets/2921409/993021d1-7a0b-401f-a2d0-9a623328f4a6)
 
 
