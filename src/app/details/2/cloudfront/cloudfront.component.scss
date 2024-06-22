@@ -1,0 +1,30 @@
+.column-left {
+    display: flex;
+    width: 60%;
+    margin: 40px;
+    flex-direction: column;
+}
+
+pre {
+    background-color: #1d1d25;
+    width: 420px;
+    border-radius: 6px;
+    margin: 6px;
+    padding: 16px;
+    font-size: 0.8em;
+}
+
+.full-width {
+    padding: 20px;
+    width: 100%;
+    justify-content: flex-start;
+}
+img {
+    width: 550px;
+    height: 300px;
+
+}
+
+pre {
+    width: 550px;
+}

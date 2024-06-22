@@ -1,8 +1,146 @@
 <div class="flex-container wrap-content">
     <div class="flex-container">
-        <div class="back" routerLink="/"> <div class="back-icon"><</div> Voltar</div>
+        <div class="back" routerLink="/aws"> <div class="back-icon"><</div> Back</div>
     </div>
     <div class="flex-container content">
-        <div class="column-left">
+        <div class="flex-container">
+            <img src="/diagrams/2step.png" />
+        </div>
+        <div class="full-width">
+            If you want, you can delete the old stack. But remember to access the <span class="aws-color">AWS</span> console and clear the bucket, so the bucket can be removed.
+            <pre>
+aws cloudformation delete-stack --stack-name timelineaws-stack \
+    <span class="aws-color">--profile cloudformation</span>
+            </pre>
+            Now I'm going to use <span class="cloudformation-color">CloudFormation</span> to create a private <span class="s3-color">S3 Bucket</span> and a 
+            <span class="cloudfront-color">CloudFront</span> Distribution which will have access to GetObjects from that bucket.<br>
+            I'm starting the step two of my personal challenge, copying and modifying the file <i>timelineaws.yaml</i> which I used in the step one.    <br><br>
+            Now the file looks like this: <br><br>
+
+            <div class="flex-container content">
+                <pre>
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Creating a private s3 bucket and make it accessilble via CloudFront
+
+Parameters:
+  BucketName: {{'{'}} Type: String, Default: <span class="aws-color">"timelineaws-cloudfront"</span> {{'}'}}
+
+Resources:  
+  TimelineAwsBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      AccessControl: Private
+      BucketName: !Ref BucketName
+
+      <span class="aws-color">
+  CloudFrontOriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Description: "Origin Access Control (OAC) for allowing cloudfront to access S3 bucket"
+        Name: static-hosting-OAC
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+  
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    DependsOn:
+      - TimelineAwsBucket
+    Properties:
+      DistributionConfig:
+        PriceClass: PriceClass_100
+        Origins:
+          - DomainName: !GetAtt TimelineAwsBucket.DomainName
+            Id: static-hosting
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+            OriginAccessControlId: !GetAtt CloudFrontOriginAccessControl.Id
+        Enabled: "true"
+        DefaultRootObject: index.html
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+          - ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        HttpVersion: http2
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          Compress: true
+          TargetOriginId: static-hosting
+          ForwardedValues:
+            QueryString: "false"
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+
+  BucketPolicyForCloudFront:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref TimelineAwsBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          Sid: "AllowCloudFrontGetObject"
+          Effect: Allow
+          Principal: 
+            Service: "cloudfront.amazonaws.com"
+          Action: "s3:GetObject"
+          Resource: !Sub "arn:aws:s3:::${{'{'}}TimelineAwsBucket{{'}'}}/*"
+          Condition:
+            StringEquals:
+              AWS:SourceArn:
+                - !Sub arn:aws:cloudfront::${{'{'}}AWS::AccountId{{'}'}}:distribution/${{'{'}}CloudFrontDistribution{{'}'}}
+        </span>
+
+Outputs:
+    TimelineAwsBucket:
+      Description: Name of the bucket
+      Value: !Ref TimelineAwsBucket
+    <span class="aws-color">
+    CloudFrontOriginAccessControl:
+      Value: !Ref CloudFrontOriginAccessControl
+    CloudFrontDistribution:
+      Value: !Ref CloudFrontDistribution
+    </span>
+                </pre>
+                <div>
+                    We can see that compared with the step one, a lot of things were changed
+                    <ul class="listing">
+                        <li>I changed the name of the bucket</li>
+                        <li>I removed a lot of properties from the bucket, such as Website Configuration and public access</li>
+                        <li>also I removed the bucket policy which made the bucket public to everyone</li>
+                    </ul>
+                    And I added things related to the <span class="cloudfront-color">CloudFront</span> and a new Bucket Policy
+                    <ul class="listing">
+                        <li>Origin Access Control to permit <span class="cloudfront-color">CloudFront</span> to access a S3 origin</li>
+                        <li>Price Class 100, because it's cheaper, for learning purposes it's enough</li>
+                        <li>Define the the DefaultRootObject as index.html</li>
+                        <li>CustomErrorResponse to redirect to my root (index.html) when: 404 Page not found or 403 Forbidden</li>
+                        <li>For this example we won't need to add Cookies nor QueryString on our Cache Key</li>
+                        <li>And we're creating a new Bucket Policy to allow <span class="cloudfront-color">CloudFront</span> to access it</li>
+                    </ul>
+                    <br><br>
+                    <div class="flex-container content">
+                        <div>
+                            With this new yaml file we can then run the <span class="aws-color">aws cloudformation create-stack</span>.
+                        </div>
+                    </div>
+                    <pre>
+aws cloudformation create-stack --stack-name timelineaws-cloudfront \
+    --template-body file://timelineaws.yaml <span class="aws-color">--profile cloudformation</span>
+                    </pre>
+                    <div class="flex-container content">
+                        <div>
+                            And when the creation of the stack was completed, you can access you <span class="s3-color">S3 Bucket</span> using the 
+                            <span class="aws-color">AWS</span> console and upload the index.html from you app.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
