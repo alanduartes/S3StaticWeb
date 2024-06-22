@@ -1,0 +1,61 @@
+.wrap-resume {
+    display: flex;
+    width: 72%;
+    align-items: flex-start;
+    background-color: #1d1d25;
+    border-radius: 6px;
+    padding: 20px;
+    .language {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-end;
+        .lang-items-sel {
+            display: flex;
+            flex-direction: row;
+            padding: 8px;
+            background-color: #292935;
+            border-radius: 6px;
+            justify-content: space-between;
+            width: 60px;
+            .lang-item {
+                cursor: pointer;
+                color: rgb(143, 147, 150);
+            }
+            .lang-item.selected {
+                color: aliceblue;
+            }
+        }
+    }
+
+    section {
+        margin-top: 20px;
+        .content {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            .title {
+                width: 100%;
+            }
+        }
+    }
+    .title {
+        width: 100%;
+    }
+    .card-experience {
+        padding: 20px;
+        margin: 20px;
+        border: solid 1px #ff9900;
+        border-radius: 6px;
+        width: 100%;
+        .company {
+            .description {
+                margin-top: 12px;
+            }
+        }
+    }
+}
+.hidden {
+    display: none;
+}

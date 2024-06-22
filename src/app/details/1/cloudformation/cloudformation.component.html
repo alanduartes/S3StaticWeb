@@ -1,6 +1,6 @@
 <div class="flex-container wrap-content">
     <div class="flex-container">
-        <div class="back" routerLink="/"> <div class="back-icon"><</div> Voltar</div>
+        <div class="back" routerLink="/"> <div class="back-icon"><</div> Back</div>
     </div>
     <div class="flex-container content">
         <div class="column-left">
@@ -70,15 +70,17 @@ Outputs:
 
                 </div>
                 Then run the aws cli command to create your <span class="cloudformation-color">cloudformation</span> stack, to do all this, it's necessary for you create an account on AWS<br>
-                Download the <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html" target="_blank">awscli</a>
-                Create an IAM User<br>
-                Create an access key to that user<br>
-                Run on your terminal <span class="aws-color">aws configure</span> and fill up the required fields to authenticate<br><br>
+                <ul class="listing">
+                  <li>Download the <a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html" target="_blank">awscli</a></li>
+                  <li>Create an <span class="iam-color">IAM User</span> using the <span class="aws-color">AWS console</span></li>
+                  <li>Create an access key to that user</li>
+                  <li>Run on your terminal <span class="aws-color">aws configure</span> and fill up the required fields to authenticate<br></li>
+                </ul>
                 The code bellow I'm using a cloudformation profile that holds the credentials and configurations of an IAM user that I created.
 
                 <pre>
 aws cloudformation create-stack --stack-name timelineaws-stack \
-    --template-body file://timelineaws.yaml --profile cloudformation
+    --template-body file://timelineaws.yaml <span class="aws-color">--profile cloudformation</span>
                 </pre>
 
                 When the creating of the resources is finished you can.<br>
@@ -91,7 +93,7 @@ aws cloudformation create-stack --stack-name timelineaws-stack \
                 the <span class="cloudformation-color">cloudformation</span> stack through the console or within the CLI.
                 <pre>
 aws cloudformation delete-stack --stack-name timelineaws-stack \
-    --profile cloudformation
+    <span class="aws-color">--profile cloudformation</span>
                 </pre>
                 Again I'm making explicity the profile of my <span class="cloudformation-color">cloudformation</span> user
 

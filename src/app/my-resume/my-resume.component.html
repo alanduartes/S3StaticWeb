@@ -1,0 +1,300 @@
+<div class="flex-container wrap-content">
+    <div class="flex-container">
+        <div class="back" routerLink="/"> <div class="back-icon"><</div> Back</div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-container-vertical wrap-resume">
+            <div class="language">
+                <div class="lang-items-sel">
+                    <div class="lang-item" [class.selected]="resumeLanguage=='br'" (click)="resumeLanguage='br'">BR</div>
+                    <hr>
+                    <div class="lang-item" [class.selected]="resumeLanguage=='en'" (click)="resumeLanguage='en'">EN</div>
+                </div>
+            </div>
+            <div class="flex-container-vertical wrap-resume" [class.hidden]="resumeLanguage == 'en'">
+                <h2 class="aws-color">Alan Duarte dos Santos</h2>
+                <p>Programador Java</p>
+                <p>Brasileiro, Solteiro, 34 anos</p>
+                <p>Celular: (41) 99667-3259 / E-mail: alanduartes{{'@'}}gmail.com</p>
+                <p><a href="https://www.linkedin.com/in/alan-duarte-dos-santos-9b900992" target="_blank"><span class="linkedin-color">LinkedIn</span></a></p>
+                
+                <section class="flex-container content">
+                    <div class="title">Conhecimentos</div>
+                    <div class="flex-container content">
+                        Java | Spring Boot | Java Swing | JPA | Hibernate | Jasper Studio | iReport | iText | jUnit | Mockito | Docker |
+                        Terraform | CloudFormation | Cloudfront | SQS | SNS | S3 | IAM | Maven | PHP | Zend Framework
+                        I e II | Laravel | MySQL | Oracle | Postgres | Doctrine | Eloquent | HTML5 | CSS3 | Flexbox |
+                        ES6 | JQUERY | AJAX | Angular | MVC | POO | Data Modeling | JSON | Yaml | GIT |
+                        SVN | Python (Flask) | Kubernetes (Kind) | NodeJS (Express) | MongoDB | R
+                    </div>
+                </section>
+
+                <section class="flex-container content">
+                    <div class="title">Formação</div>
+                    <div class="flex-container content">
+                        2009 - 2013<br>
+                        Tecnologia em Análise e Desenvolvimento de Sistemas pela Universidade Federal do Paraná (UFPR)
+                    </div>
+                </section>
+
+                <section class="flex-container content">
+                    <div class="title">Experiência Profissional</div>
+                    <div class="card-experience">
+                        <div class="period">11/2022 - Atual</div>
+                        <div class="company">
+                            <div class="company-name">Meta</div>
+                            <div class="position">Desenvolvedor Java Swing</div>
+                            <div class="description">
+                                Desenvolvimento com Java Swing e banco de dados Oracle, JPA, Maven, JBoss7.4, iText,
+                                jFreeChart e Workbook para geração de relatórios (PDF e Planilha), Extração,
+                                Transformação e Carga de dados em tabelas para fins estatísticos, principal tarefa foi a
+                                criação de um módulo estatístico para geração de relatório com dados dinâmicos onde o
+                                usuário seleciona as colunas, ordenação e filtros.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">09/2020 - 10/2022</div>
+                        <div class="company">
+                            <div class="company-name">Sisteplan</div>
+                            <div class="position">Desenvolvedor Java Spring Boot/Angular</div>
+                            <div class="description">
+                                Principais atividades: Desenvolvimento Frontend com Angular 11, Backend com Java
+                                utilizando o framework SpringBoot, JPA para o mapeamento do banco relacional, SGBD
+                                Postgresql, versionamento de código com SVN, Thymeleaf para gerar templates de email
+                                utilizando o Java, JasperStudio para geração de relatórios
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">11/2019 - 09/2020</div>
+                        <div class="company">
+                            <div class="company-name">Multilig</div>
+                            <div class="position">Desenvolvedor PHP/Laravel</div>
+                            <div class="description">
+                                Principais atividades: Suporte, manutenção e novos projetos para implementar no ERP
+                                financo, a modelagem de dados também fica por nossa conta, somos uma equipe pequena
+                                onde cada programador desenvolve o papel de Full stack, para o backend utilizamos PHP
+                                com Laravel, ORM Eloquent, para o frontend utilizamos ES6 (esse é lado bom, que nos dá
+                                liberdade para utilizar os novos recursos do JS) e algumas coisas de jQuery, HTML5 e CSS.
+                                Controle de versão com Git.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">03/2019 - 10/2019</div>
+                        <div class="company">
+                            <div class="company-name">SoftExpert</div>
+                            <div class="position">Desenvolvedor PHP</div>
+                            <div class="description">
+                                Principais atividades: Rotina utilizando o conceito de CICD em uma equipe de mais de 100
+                                pessoas da área de tecnologia (analistas de testes, gerenciadores de banco de dados
+                                Scrum masters e P.Os). Desenvolvimento com PHP utilizando os bancos Postgre,
+                                SQLServer e Oracle, também realizando alguns ajustes em sistemas Java, tive um breve
+                                contato com React e Redux.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">10/2015 - 03/2019</div>
+                        <div class="company">
+                            <div class="company-name">Atual Card</div>
+                            <div class="position">Desenvolvedor PHP/Zend Framework</div>
+                            <div class="description">
+                                Principais atividades: Desenvolvimento de novas features e manutenção das lojas (e-
+                                commerce) e de sistemas internos para controle da produção da empresa em PHP com
+                                Zend Framework 1 e 2.
+                                SGBD MySQL – Após um pouco mais de 1 ano de empresa, recebi a oportunidade de
+                                trabalhar na equipe de B.I onde tive contato com a linguagem R para realizar tarefas de
+                                ETL.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">2014 - 2051</div>
+                        <div class="company">
+                            <div class="company-name">Corinfo Gestão e Tecnologia</div>
+                            <div class="position">Desenvolvedor PHP</div>
+                            <div class="description">
+                                Principais atividades: Correção de bugs e novos recursos para um ERP (PHP). Análise e
+                                alterações no Banco de Dados (MySql) e nas views. Ambiente Windows.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">2011 - 2014</div>
+                        <div class="company">
+                            <div class="company-name">Abix Tecnologia Ltda.</div>
+                            <div class="position">Desenvolvedor PHP</div>
+                            <div class="description">
+                                Principais atividades: Desenvolvimento de sistemas em PHP com banco de dados Oracle e
+                                MySql para uso interno dos funcionários; Modelagem de dados; desenvolvimento e
+                                manutenção do site. Rotina de trabalho em ambiente Linux, distribuição Ubuntu.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="flex-container content">
+                    <div class="title">Qualificações e Atividades Complementares</div>
+                    <ul class="listing">
+                        <li>22018 Curso de Desenvolvedor Web Full Stack Nanodegree (Udacity - Online - duração 6 meses)</li>
+                        <li>2013 Curso de Bancos de Dados MYSQL (Elaborata Informática - Curitiba/PR, duração de 42 horas)</li>
+                        <li>2011 Curso de Linux II (UTFPR – Universidade Tecnológica Federal do Paraná, duração de 54 horas)</li>
+                        <li>2008 Curso de Linux I (FACEAR – Araucária/PR, duração de 20 horas)</li>
+                    </ul>
+                </section>
+                <section class="flex-container content">
+                    <div class="title">Idiomas</div>
+                    <p>Inglês: TOEFL ITP (B1)</p>
+                </section>
+            </div>
+
+
+
+            <div class="flex-container-vertical wrap-resume" [class.hidden]="resumeLanguage == 'br'">
+                <h2 class="aws-color">Alan Duarte dos Santos</h2>
+                <p>Java Developer</p>
+                <p>Brazilian, Single, 34 years old</p>
+                <p>Cellphone: +55(41) 99667-3259 / E-mail: alanduartes{{'@'}}gmail.com</p>
+                <p><a href="https://www.linkedin.com/in/alan-duarte-dos-santos-9b900992" target="_blank"><span class="linkedin-color">LinkedIn</span></a></p>
+
+                <section class="flex-container content">
+                    <div class="title">Knowledges</div>
+                    <div class="flex-container content">
+                        Java | Spring Boot | Java Swing | JPA | Hibernate | Jasper Studio | iReport | iText | jUnit | Mockito | Docker |
+                        Terraform | CloudFormation | Cloudfront | SQS | SNS | S3 | IAM | Maven | PHP | Zend Framework
+                        I e II | Laravel | MySQL | Oracle | Postgres | Doctrine | Eloquent | HTML5 | CSS3 | Flexbox |
+                        ES6 | JQUERY | AJAX | Angular | MVC | POO | Data Modeling | JSON | Yaml | GIT |
+                        SVN | Python (Flask) | Kubernetes (Kind) | NodeJS (Express) | MongoDB | R
+                    </div>
+                </section>
+
+                <section class="flex-container content">
+                    <div class="title">Formation</div>
+                    <div class="flex-container content">
+                        2009 - 2013<br>
+                        Analysis and System Development at Universidade Federal do Paraná (UFPR)
+                    </div>
+                </section>
+
+                <section class="flex-container content">
+                    <div class="title">Professional Experience</div>
+                    <div class="card-experience">
+                        <div class="period">11/2022 - Current</div>
+                        <div class="company">
+                            <div class="company-name">Meta</div>
+                            <div class="position">Java Developer with Swing</div>
+                            <div class="description">
+                                Developing with Java Swing and Oracle database, JPA, Maven, JBoss7.4, iText, jFreeChart
+                                and Workbook to generate reports (PDF and Spreadsheet), ETL of data to tables for
+                                statistics end. The main task was a module creation to generate different kind of reports
+                                where the user choose which column and in what order he wanted to see the reports.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">09/2020 - 10/2022</div>
+                        <div class="company">
+                            <div class="company-name">Sisteplan</div>
+                            <div class="position">Java Developer with Spring Boot/Angular</div>
+                            <div class="description">
+                                Developing a tele classes web app using Java with Spring Boot and Angular Postgres
+                                DBMS, SVN to versioning the code, Thymeleaf to generate e-mail templates, JasperStudio
+                                to generate reports. Main activity was to make a function to record the streaming lectures, a
+                                calendar to maintain the students and professor schedule, a button to mute microphone,
+                                fullscreen... The architecture was MVC and REST.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">11/2019 - 09/2020</div>
+                        <div class="company">
+                            <div class="company-name">Multilig</div>
+                            <div class="position">PHP Developer with Laravel</div>
+                            <div class="description">
+                                Give users support, maintenence an ERP proprietary called Financo. GIT to versioning, JS,
+                                jQuery, HTML and CSS, for the backend we used PHP with Laravel framework and there
+                                was a few parts of the project using pure PHP, I tried hard to make good use of the MVC but
+                                my boss insisted that we should put business rules in the controller.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">03/2019 - 10/2019</div>
+                        <div class="company">
+                            <div class="company-name">SoftExpert</div>
+                            <div class="position">PHP Developer</div>
+                            <div class="description">
+                                Working together with POs, Scrum masters and a small team of developers, we used PHP
+                                to maintain an ERP proprietary, there was an architecture team the build a framework which
+                                we use to program, so thinking on that we didn’t have too much freedom to work, I think
+                                that’s all I can tell about this company, we used to create Pull Requests and the code was
+                                reviewed by the colleagues and then the pipeline was triggered.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">10/2015 - 03/2019</div>
+                        <div class="company">
+                            <div class="company-name">Atual Card</div>
+                            <div class="position">PHP/Zend Framework Developer</div>
+                            <div class="description">
+                                Developing with PHP using Zendframework I and II to develop new features and
+                                maintenance of the e-commerces websites and internal systems from the company, we used
+                                MySQL for the DB, I also helped the BI team with ETL where I used a language called R, so
+                                I talked to the Database Administrator and he create a replica of the database so we could
+                                perform queries without overload the DB in production.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">2014 - 2015</div>
+                        <div class="company">
+                            <div class="company-name">Corinfo Gestão e Tecnologia</div>
+                            <div class="position">PHP Developer</div>
+                            <div class="description">
+                                If you read already the Multilig section, the description there applies here too, that is the
+                                same company, but here in 2014 there was no Laravel, only pure PHP, HTML, JS, CSS,
+                                jQuery and MySQL, in this moment I remind that I needed to fix some issues on a wordpress
+                                blog from one of our customers.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-experience">
+                        <div class="period">2011 - 2014</div>
+                        <div class="company">
+                            <div class="company-name">Abix Tecnologia Ltda.</div>
+                            <div class="position">PHPDeveloper</div>
+                            <div class="description">
+                                My <b>first</b> real world experience started here, this company had a static website to show their
+                                products and services, they hire me to create a dynamic website, they already had a new
+                                page style so I didn’t have to worry with designer, my challenge as the only programmer was
+                                to model the database, extract data from an Oracle DB and load it in the newly created
+                                MySQL, with the help from my infrastructure colleagues I managed to configure an Apache
+                                server using Linux and it was a success, after a while I didn’t have too much work to do so I
+                                talked with some employees from others sectors and started to create an internal app to facilitate some activities of them, 
+                                we used LDAP to connect to it, and there was a few things you could do
+                                inside that Portal, like, send an e-mail to communicate your absence, an app to upload work
+                                expenses on trip and a lot of others that I can’t remember sadly. The work environment was
+                                with Ubuntu Linux.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="flex-container content">
+                    <div class="title">Qualifications and Complementary Activities</div>
+                    <ul class="listing">
+                        <li>2018 Fullstack Web Developer Nanodegree Course (Udacity - Online - 6 months)</li>
+                        <li>2013 MYSQL Database Course (Elaborata Informática - Curitiba/PR, 42 hours)</li>
+                        <li>2011 Linux II Course (UTFPR – Universidade Tecnológica Federal do Paraná, 54 hours)</li>
+                        <li>2008 Linux I Course (FACEAR – Araucária/PR, 20 hours)</li>
+                    </ul>
+                </section>
+                <section class="flex-container content">
+                    <div class="title">Language</div>
+                    <p>English: TOEFL ITP (B1)</p>
+                </section>
+            </div>
+        </div>
+    </div>

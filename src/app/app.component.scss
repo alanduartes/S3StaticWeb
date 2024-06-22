@@ -1,0 +1,20 @@
+.app-title {
+    width: 10%;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.app-menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    .menu-item {
+        margin: 0 10px 0 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    > :hover {
+        text-decoration: underline;
+    }
+}
