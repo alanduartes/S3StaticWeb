@@ -10,6 +10,7 @@ import { CloudfrontComponent } from './details/2/cloudfront/cloudfront.component
 import { HomeComponent } from './home/home.component';
 import { MyResumeComponent } from './my-resume/my-resume.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { CodepipelineComponent } from './details/3/codepipeline/codepipeline.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CloudformationComponent,
     CloudfrontComponent,
     HomeComponent,
-    MyResumeComponent
+    MyResumeComponent,
+    CodepipelineComponent
   ],
   imports: [
     BrowserModule,

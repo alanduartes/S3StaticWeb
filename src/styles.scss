@@ -38,6 +38,12 @@ body {
     color: white;
 }
 
+.full-width {
+    padding: 20px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
 .flex-container {
     box-sizing: border-box;
     display: flex;

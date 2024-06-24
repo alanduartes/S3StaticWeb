@@ -1,0 +1,131 @@
+<div class="flex-container wrap-content">
+    <div class="flex-container">
+        <div class="back" routerLink="/aws"> <div class="back-icon"><</div> Back</div>
+    </div>
+    <div class="flex-container content">
+        <h2 class="full-width">Now we're talking!</h2>
+
+        <div class="flex-container content">
+            <p class="full-width">I just get bored to upload manually my project everytime I made an update, so it's time to learn <span class="codepipeline-color">CodePipeline</span>.</p>
+            <div class="flex-container content full-width">
+                <div class="left-side-content">
+                    <p>I'm creating a <span class="codepipeline-color">CodePipeline</span> using the <span class="aws-color">AWS</span> console.</p>
+                </div>
+                <img src="/diagrams/codepipeline1.png" />
+            </div>
+            
+            <div class="left-side-content">
+                <div>
+                    I gave a name for the Pipeline and for the Role that'll be created to access the <span class="s3-color">S3 Bucket</span>, it'll have with everything that
+                    <span class="codepipeline-color">CodePipeline</span> needs. <br>
+                    I left everything with the default configuration and clicked Next.
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline2.png" />
+                </div>
+            </div>
+
+            <div class="left-side-content">
+                <div>
+                    I ichose a source provider (in my case I'm using GitHub), I only needed to click on connect and follow the steps to connect with my GitHub account.<br>
+                    After connected, I chose a repository and the name of the default branch.<br><br><br><br>
+                    Then on trigger section, I chose a branch that will trigger the pipeline
+                    <img src="/diagrams/codepipeline4.png" > <br>
+                    I <span class="aws-color">include</span> the main branch or any other that I wanted to trigger the pipeline after a push.
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline3.png" />
+                </div>
+            </div>
+
+            <div class="left-side-content">
+                <div>
+                    Now it's the build time!<br><br>
+                    I chose <span class="aws-color">AWS</span> CodeBuild.<br>
+                    I added an environment variable called S3_BUCKET and putted the URL of the <span class="s3-color">S3 Bucket</span> which was hosting my page<br><br>
+                    I left everything else with default configurations.
+                    <br>
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline5.png" />
+                </div>
+            </div>
+
+            <div class="left-side-content">
+                <div>
+                    Now I'll need to create a build project.<br>
+                    I chose Ubuntu for the OS<br>
+                    Gave a name for the Role that'll be created<br>
+                    
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline6.png" />
+                </div>
+            </div>
+
+            <div class="left-side-content">
+                <div>
+                    On build spec choose, I used a buildspec.yml file.<br>
+                    I disabled all the logs (Cloud Watch and S3 Logs) that's something I want to study another time soon.<br>
+                    Left everything else as default and click Continue to pipeline.
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline7.png" />
+                </div>
+            </div>
+
+            <div class="left-side-content">
+                <div>
+                    Chose Amazon S3 for the deploy provider<br>
+                    Chose the same region of my bucket<br>
+                    Chose my bucket<br>
+                    And tick the Extract file before deploy<br>
+                    Create my pipeline.
+                </div>
+            </div>
+            <div class="right-side-content">
+                <div>
+                    <img src="/diagrams/codepipeline8.png" />
+                </div>
+            </div>
+            Now I just need to wait the pipeline run for the first time, and trying out my first commit.<br><br>
+            I added a buildspec.yml file at the root of my project with that content:<br><br>
+            <pre>
+version: 0.2
+
+env:
+    variables:
+    CACHE_CONTROL: "86400"
+    
+    S3_BUCKET: {{' "{{ S3_BUCKET }}" '}}
+    BUILD_FOLDER: "dist/timelineaws/browser"
+phases:
+    install:
+    runtime-versions:
+        nodejs: 20
+    commands:
+        - echo Installing source npm dependencies
+        - npm install
+        - npm install -g {{'@'}}angular/cli
+    build:
+    commands:
+        - echo Build starting
+        - ng build
+artifacts:
+    files:
+    - "**/*"
+    base-directory: "dist/timelineaws/browser*"
+    discard-paths: no
+            </pre>
+        </div>
+    </div>

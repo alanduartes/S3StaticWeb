@@ -5,12 +5,14 @@ import { CloudformationComponent } from './details/1/cloudformation/cloudformati
 import { CloudfrontComponent } from './details/2/cloudfront/cloudfront.component';
 import { HomeComponent } from './home/home.component';
 import { MyResumeComponent } from './my-resume/my-resume.component';
+import { CodepipelineComponent } from './details/3/codepipeline/codepipeline.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'aws', component: AwsTimelineComponent },
     { path: 'firststep', component: CloudformationComponent },
     { path: 'secondstep', component: CloudfrontComponent },
+    { path: 'thirdstep', component: CodepipelineComponent },
     { path: 'my-resume', component: MyResumeComponent },
 ];
 

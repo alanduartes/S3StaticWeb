@@ -1,0 +1,26 @@
+.left-side-content {
+    display: flex;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 35%;
+}
+
+.right-side-content {
+    display: flex;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+pre {
+    background-color: #1d1d25;
+    width: 420px;
+    border-radius: 6px;
+    margin: 6px;
+    padding: 16px;
+    font-size: 0.8em;
+}
